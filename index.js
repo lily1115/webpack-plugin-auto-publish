@@ -4,8 +4,7 @@ const path = require('path')
 const colors = require('colors')
 const mkdirs = require('jm-mkdirs')
 const exec = require('child_process').exec
-require('child_process').execSync('git name-rev --name-only HEAD', { 'encoding': 'utf8' })
-class WebpackJpushPublishPlugin {
+class WebpackPluginAutoPublish {
     constructor(options) {
         this.options = Object.assign({}, options)
     }
@@ -72,9 +71,7 @@ class WebpackJpushPublishPlugin {
                             }, function (error, stdout, stderr) {
                                 if (error) {
                                     console.log(colors.red.underline(error))
-                                    console.log(colors.yellow.underline(stdout))
-                                    console.log(colors.blue.underline(stderr))
-                                    // callback()
+                                    callback()
                                     return
                                 } else {
                                     console.log(colors.green('commit成功'))

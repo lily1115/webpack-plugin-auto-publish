@@ -16,14 +16,14 @@ $ npm install webpack-plugin-auto-publish --save-dev
 
 ```js
 
-const jpushPublish = require('webpack-plugin-auto-publish');
+const autoPublish = require('webpack-plugin-auto-publish');
 
 const BRANCHS = { development: 'dev', production: 'test' }
 const BRANCH = BRANCHS[process.env.NODE_ENV || 'development']
 
 module.exports = {
   plugins: [
-    new jpushPublish({
+    new autoPublish({
         gitLab: 'http://192.168.110.22/neoscholar/neo_vue/lesson-study-class-interaction-preview.git',
         env: BRANCH,                        //分支名称
         version: (new Date).getTime(),      //打包版本
@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 
-**webpack.config.js**
+**vue.config.js**
 ```js
 
 configureWebpack: (config) => {
