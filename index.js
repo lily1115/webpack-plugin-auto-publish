@@ -207,4 +207,4 @@ class WebpackPluginAutoPublish {
         }
     }
 }
-module.exports = WebpackJpushPublishPlugin
+module.exports = WebpackPluginAutoPublish
