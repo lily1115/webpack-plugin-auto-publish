@@ -1,0 +1,16 @@
+{
+  "name": "webpack-plugin-auto-publish",
+  "version": "0.0.1",
+  "description": "前端编译打包发布部署辅助工具",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "auto-publish"
+  ],
+  "dependencies": {
+    "colors": "^1.4.0",
+    "jm-mkdirs": "0.0.1"
+  },
+  "license": "MIT"
+}
