@@ -10,7 +10,34 @@
 $ npm install webpack-plugin-auto-publish --save-dev
 ```
 
+
+vue vue-cli-service 项目配置如下
+
+> 由于 run dev 默认的就是 development, 与我们打包分支 dev 重复，所以要在项目中 将.env.development copy一份 命名为 .env.dev 文件。 添加 NODE_ENV = 'dev'。然后 package.json 更改 `"build:dev": "vue-cli-service build  --mode dev",`
+
+**vue.config.js**
+
+```js
+
+const autoPublish = require('webpack-plugin-auto-publish');
+const BRANCHS = { development: 'dev', production: 'test' }
+const BRANCH = BRANCHS[process.env.NODE_ENV || 'development']
+
+configureWebpack: (config) => {
+  config.plugins.push(
+    new PublishPlugin({
+      gitLab: 'http://192.168.110.22/neoscholar/neo_vue/lesson-study-class-interaction-preview.git',
+      env: BRANCH,
+      version: new Date().getTime(),
+      dir: '/publish/dist/',
+      filter: /^.*$/,
+    })
+  )
+}
+```
+
 然后添加 `webpack` 配置. 如下:
+
 
 **webpack.config.js**
 
@@ -32,22 +59,6 @@ module.exports = {
     }),
   ],
 };
-```
-
-**vue.config.js**
-```js
-
-configureWebpack: (config) => {
-  config.plugins.push(
-    new PublishPlugin({
-      gitLab: 'http://192.168.110.22/neoscholar/neo_vue/lesson-study-class-interaction-preview.git',
-      env: BRANCH,
-      version: new Date().getTime(),
-      dir: '/publish/dist/',
-      filter: /^.*$/,
-    })
-  )
-}
 ```
 
 
