@@ -20,8 +20,8 @@ vue vue-cli-service 项目配置如下
 ```js
 
 const autoPublish = require('webpack-plugin-auto-publish');
-const BRANCHS = { development: 'dev', production: 'test' }
-const BRANCH = BRANCHS[process.env.NODE_ENV || 'development']
+const BRANCHS = { dev: 'dev', production: 'test' }
+const BRANCH = BRANCHS[process.env.NODE_ENV || 'dev']
 
 configureWebpack: (config) => {
   config.plugins.push(
@@ -45,8 +45,8 @@ configureWebpack: (config) => {
 
 const autoPublish = require('webpack-plugin-auto-publish');
 
-const BRANCHS = { development: 'dev', production: 'test' }
-const BRANCH = BRANCHS[process.env.NODE_ENV || 'development']
+const BRANCHS = { dev: 'dev', production: 'test' }
+const BRANCH = BRANCHS[process.env.NODE_ENV || 'dev']
 
 module.exports = {
   plugins: [
